@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="containerSectionAdmin">
+            {% include('/administration/navAdministration.html.twig') %}
+            <div class="containerAdmin">
+                <div class="adminTabProfil">
+                    <h3>Modifier les informations</h3>
+                    <div class="containerModifyPassProfil">
+                        {% for message in app.flashes('success') %}
+                            <div class="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {{ form_start(formModifyProfil) }}
+                            <div class="formGroupLogin">
+                                <label for="newLogin" class="labelForm" >Identifiant</label><br />
+                                {{ form_widget(formModifyProfil.username) }}
+                                {{ form_errors(formModifyProfil.username) }}
+                            </div>
+                            <div class="formGroupLogin">
+                                <label for="newCity" class="labelForm">Ville</label><br />
+                                {{ form_widget(formModifyProfil.city) }}
+                                {{ form_errors(formModifyProfil.city) }}
+                            </div>
+                            <div class="formGroupLogin">
+                                <label for="newPhone" class="labelForm">Téléphone</label><br />
+                                {{ form_widget(formModifyProfil.phone) }}
+                                {{ form_errors(formModifyProfil.phone) }}
+                            </div>
+                            <div class="formGroupLogin">
+                                <label for="newEmail" class="labelForm">Email</label><br />
+                                {{ form_widget(formModifyProfil.email) }}
+                                {{ form_errors(formModifyProfil.email) }}
+                            </div>
+                            <div class="formGroupLogin">
+                                <label for="newAvatar" class="labelForm">Avatar</label><br />
+                                <div class="btnValidate btnUpload">Upload
+                                    {{ form_widget(formModifyProfil.avatar) }}
+                                    {{ form_errors(formModifyProfil.avatar) }}
+                                </div>
+                            </div>
+                            <div class="formGroupLogin">
+                                <button type="submit" class="btnValidate">Modifier</button>
+                            </div>
+                            <input type="hidden" id="modifyUserToken" name="modifyUser[_token]" value="{{ csrf_token('modifyUserToken') }}" />
+                        {{ form_end(formModifyProfil) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

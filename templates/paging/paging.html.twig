@@ -1,0 +1,19 @@
+<section class="containerPagination">
+    <ul class="pagination"> 
+        <div class="chevronItem">
+            <li class=" {% if page == 1 %} {{ "disabled" }} {% endif %}">
+                <a class="paginationLink" href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}" class="page-link"><img class="chevronPaging" src="{{ asset('img/chevron.png') }}"></a>
+            </li>
+        </div>
+        {% for pageNumber in 1..pagesNumber %}
+            <li class="pageItem {% if page != pageNumber %} {{ "disabled" }} {% endif %}">
+                <a class="paginationLink" href="?page={{ pageNumber }}" class="link-page">{{ page }}</a>
+            </li>
+        {% endfor %}
+        <div class="chevronItem">
+            <li class="chevronItem {% if page == pagesNumber %} {{ "disabled" }} {% endif %}">
+                <a class="paginationLink" href="?page={{ page + 1 }}" class="page-link"><img class="chevronPaging chevronRight" src="{{ asset('img/chevron.png') }}"></a>
+            </li>
+        </div>
+    </ul>
+</section>

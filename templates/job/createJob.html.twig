@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main>
+       <section class="containerSectionAdmin">
+            {% include('/administration/navAdministration.html.twig') %}
+            <div class="containerAdmin">
+                <div class="adminTabProfil">
+                    {% if modify is defined %}
+                        <h3>Modifier un emploi</h3>
+                    {% else %}
+                        <h3>Ajouter un emploi</h3>
+                    {% endif %}
+                    {% for message in app.flashes('message') %}
+                        <div class="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {{ form_start(formCreateJob) }}
+                        <div class="formGroupLogin">
+                            <label for="title" class="labelForm">Titre</label><br />
+                            {{ form_widget(formCreateJob.titleJob) }}
+                            {{ form_errors(formCreateJob.titleJob) }}
+                        </div>
+                        <div class="formGroupLogin">
+                            <label for="content" class="labelForm">Contenu</label><br />
+                            {{ form_widget(formCreateJob.contentJob) }}
+                            {{ form_errors(formCreateJob.contentJob) }}
+                        </div>
+                        <div class="formGroupLogin">
+                            <label for="enterprise" class="labelForm">Entreprise</label><br />
+                            {{ form_widget(formCreateJob.enterpriseJob) }}
+                            {{ form_errors(formCreateJob.enterpriseJob) }}
+                        </div>
+                        <div class="formGroupLogin">
+                            <label for="place" class="labelForm">Lieu</label><br />
+                            {{ form_widget(formCreateJob.placeJob) }}
+                            {{ form_errors(formCreateJob.placeJob) }}
+                        </div>
+                         <div class="formGroupLogin">
+                            <label for="dateBegin" class="labelForm">Date de début</label><br />
+                            {{ form_widget(formCreateJob.dateBeginJob) }}
+                            {{ form_errors(formCreateJob.dateBeginJob) }}
+                        </div>
+                         <div class="formGroupLogin">
+                            <label for="dateFinish" class="labelForm">Date de fin</label><br />
+                            {{ form_widget(formCreateJob.dateFinishJob) }}
+                            {{ form_errors(formCreateJob.dateFinishJob) }}
+                        </div>
+                        {% if modify is defined %}
+                            <div class="formGroupLogin">
+                                <button type="submit" name="validateTrick" class="btnValidate btnNewFigure mt-4 mb-3">Modifier</button>
+                            </div>
+                        {% else %}
+                            <div class="formGroupLogin">
+                                <button type="submit" name="validateTrick" class="btnValidate btnNewFigure mt-4 mb-3">Créer</button>
+                            </div>
+                        {% endif %}
+                    {{ form_end(formCreateJob) }}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

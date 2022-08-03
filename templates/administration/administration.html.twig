@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CV Guillaume Vignères - Administration{% endblock %}
+
+{% block body %}
+    <main> 
+        <section class="containerSectionAdmin">
+            {% include('/administration/navAdministration.html.twig') %}
+            <div class="containerAdmin">
+                <h3>Administration</h3>
+                <div class="adminMain"></div>   
+            </div>      
+        </section>      
+    </main>
+{% endblock %}

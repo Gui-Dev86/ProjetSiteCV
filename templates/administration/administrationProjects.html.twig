@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CV Guillaume Vignères - Administration{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="containerSectionAdmin">
+            {% include('/administration/navAdministration.html.twig') %}
+            <div class="containerAdmin">
+                
+                <div class="adminTab">
+                <h3>Réalisations<a href="{{ path('addProject')}}"><img src="{{ asset('img/icons8-plus-50.png') }}"></a></h3>
+                
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="column1">Titre</th>
+                                <th class="column2">Création</th>
+                                <th class="column3">Mis à jour</th>
+                                <th class="column4">Statut</th>
+                                <th class="column5">Activer/Désactiver</th>
+                                <th class="column6">Modifier</th>
+                                <th class="column7 columnEnd">Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for project in projects %}
+                                <tr>
+                                    <td class="column1">{{ project.titleProject }}</td>
+                                    <td class="column2">{{ project.dateCreateProject  | date('d-m-Y') }}</td>
+                                    <td class="column3">{% if project.dateCreateProject != project.dateUpdateProject %} {{project.dateUpdateProject | date('d-m-Y') }} {% else %} {{ "---" }} {% endif %}</td>
+                                    <td class="column4">{% if project.isActive == 1  %} {{ "Actif" }} {% else %} {{ "Inactif" }} {% endif %}</td>
+                                    <td class="column5">
+                                        {% if project.isActive != 1 %}
+                                            <a href="{{ path('activeProject', {'id': project.id }) }}">Activer</a>
+                                        {% else %}
+                                            <a href="{{ path('desactiveProject', {'id': project.id }) }}">Désactiver</a>
+                                        {% endif %}
+                                    </td>
+                                    <td class="column6"><a href="{{ path('modifyProject', {'id': project.id}) }}"><img src="{{ asset('img/crayon.png') }}"></a></td>
+                                    <td class="column7 columnEnd"><a href="{{ path('deleteProject', {'id': project.id}) }}?admin=1" class="delete" data-confirm="Êtes vous sûr de vouloir effacer ce projet?"><img src="{{ asset('img/poubelle.png') }}"></a></td>                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>   
+                </div>
+                <div class="containerAdminMobile">
+                <h3>Réalisations<a href="{{ path('addProject')}}"><img src="{{ asset('img/icons8-plus-50.png') }}"></a></h3>
+                    {% for project in projects %}
+                        <table class="panel">
+                            <tr class="trCompte">
+                                <td>Titre:</td>
+                                <td>{{ project.titleProject }}</td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Création:</td>
+                                <td>{{ project.dateCreateProject  | date('d-m-Y') }}</td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Mis à jour:</td>
+                                <td>{% if project.dateCreateProject != project.dateUpdateProject %} {{project.dateUpdateProject | date('d-m-Y') }} {% else %} {{ "---" }} {% endif %}</td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Statut:</td>
+                                <td>{% if project.isActive == 1  %} {{ "Actif" }} {% else %} {{ "Inactif" }} {% endif %}</td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Activer/désactiver:</td>
+                                <td>
+                                    {% if project.isActive != 1 %}
+                                        <a href="{{ path('activeProject', {'id': project.id }) }}">Activer</a>
+                                    {% else %}
+                                        <a href="{{ path('desactiveProject', {'id': project.id }) }}">Désactiver</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Modifier:</td>
+                                <td><a href="{{ path('modifyProject', {'id': project.id }) }}"><img src="{{ asset('img/crayon.png') }}"></a></td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Supprimer:</td>
+                                <td><a href="{{ path('deleteProject', {'id': project.id }) }}?admin=1" class="delete" data-confirm="Êtes vous sûr de vouloir effacer ce projet?"><img src="{{ asset('img/poubelle.png') }}"></a></td>                                    
+                            </tr>
+                        </table>
+                    {% endfor %}
+                </div>
+                <div id="pagingAdminUsers" class="paging border-top">
+                    {% include('/paging/paging.html.twig') %}
+                </div>  
+            </div>
+        </section>
+    </main>
+{% endblock %}

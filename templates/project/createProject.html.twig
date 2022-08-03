@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main>
+       <section class="containerSectionAdmin">
+            {% include('/administration/navAdministration.html.twig') %}
+            <div class="containerAdmin">
+                <div class="adminTabProfil">
+                    {% if modify is defined %}
+                        <h3>Modifier un projet</h3>
+                    {% else %}
+                        <h3>Ajouter un projet</h3>
+                    {% endif %}
+                    {% for message in app.flashes('message') %}
+                        <div class="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {{ form_start(formCreateProject) }}
+                        <div class="formGroupLogin">
+                            <label for="title" class="labelForm">Titre</label><br />
+                            {{ form_widget(formCreateProject.titleProject) }}
+                            {{ form_errors(formCreateProject.titleProject) }}
+                        </div>
+                        <div class="formGroupLogin">
+                            <label for="content" class="labelForm">Description</label><br /><br />
+                            {{ form_widget(formCreateProject.contentProject) }}
+                            {{ form_errors(formCreateProject.contentProject) }}
+                        </div>
+                        <div class="formGroupLogin">
+                            <label for="uploadMainImage" class="labelForm">Image principale</label><br />
+                            <div class="btnValidate btnUpload">Upload
+                                {{ form_widget(formCreateProject.imageProject) }}
+                                {{ form_errors(formCreateProject.imageProject) }}
+                            </div><br />
+                            <p>**Attention à bien sélectionner une image au format png ou jpeg (1280X720)</p>
+                        </div>
+                        {% if modify is defined %}
+                            <div class="formGroupLogin">
+                                <button type="submit" name="validateTrick" class="btnValidate btnNewFigure mt-4 mb-3">Modifier</button>
+                            </div>
+                        {% else %}
+                            <div class="formGroupLogin">
+                                <button type="submit" name="validateTrick" class="btnValidate btnNewFigure mt-4 mb-3">Créer</button>
+                            </div>
+                        {% endif %}
+                    {{ form_end(formCreateProject) }}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

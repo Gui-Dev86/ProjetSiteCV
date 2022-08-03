@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main>
+       <section class="containerSectionAdmin">
+            {% include('/administration/navAdministration.html.twig') %}
+            <div class="containerAdmin">
+                <div class="adminTabProfil">
+                    {% if modify is defined %}
+                        <h3>Modifier une langue</h3>
+                    {% else %}
+                        <h3>Ajouter une langue</h3>
+                    {% endif %}
+                    {% for message in app.flashes('message') %}
+                        <div class="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {{ form_start(formCreateLang) }}
+                        <div class="formGroupLogin">
+                            <label for="name" class="labelForm">Titre</label><br />
+                            {{ form_widget(formCreateLang.langName) }}
+                            {{ form_errors(formCreateLang.langName) }}
+                        </div>
+                        <div class="formGroupLogin">
+                            <label for="purcent" class="labelForm">Pourcentage</label><br />
+                                {{ form_widget(formCreateLang.purcentLang) }}
+                                {{ form_errors(formCreateLang.purcentLang) }}
+                            </div><br />
+                        </div>
+                        {% if modify is defined %}
+                            <div class="formGroupLogin">
+                                <button type="submit" name="validateTrick" class="btnValidate btnNewFigure mt-4 mb-3">Modifier</button>
+                            </div>
+                        {% else %}
+                            <div class="formGroupLogin">
+                                <button type="submit" name="validateTrick" class="btnValidate btnNewFigure mt-4 mb-3">Créer</button>
+                            </div>
+                        {% endif %}
+                    {{ form_end(formCreateLang) }}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CV Guillaume Vignères - Administration{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="containerSectionAdmin">
+            {% include('/administration/navAdministration.html.twig') %}
+            <div class="containerAdmin">
+                <div class="adminTab">
+                    <h3>Langues<a href="{{ path('addLang')}}"><img src="{{ asset('img/icons8-plus-50.png') }}"></a></h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="column1">Langue</th>
+                                <th class="column2">Pourcentage</th>
+                                <th class="column3">Modifier</th>
+                                <th class="column4 columnEnd">Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for lang in langs %}
+                                <tr>
+                                    <td class="column1">{{ lang.langName }}</td>
+                                    <td class="column2">{{ lang.purcentLang }}</td>
+                                    <td class="column3"><a href="{{ path('modifyLang', {'id': lang.id}) }}"><img src="{{ asset('img/crayon.png') }}"></a></td>
+                                    <td class="column4 columnEnd"><a href="{{ path('deleteLang', {'id': lang.id}) }}?admin=1" class="delete" data-confirm="Êtes vous sûr de vouloir effacer ce projet?"><img src="{{ asset('img/poubelle.png') }}"></a></td>                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>   
+                </div>
+                <div class="containerAdminMobile">
+                <h3>Capacités<a href="{{ path('addLang')}}"><img src="{{ asset('img/icons8-plus-50.png') }}"></a></h3>
+                    {% for lang in langs %}
+                        <table class="panel">
+                            <tr class="trCompte">
+                                <td>Capacité:</td>
+                                <td>{{ lang.langName }}</td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Pourcentage:</td>
+                                <td>{{ lang.purcentLang }}</td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Modifier:</td>
+                                <td><a href="{{ path('modifyLang', {'id': lang.id }) }}"><img src="{{ asset('img/crayon.png') }}"></a></td>
+                            </tr>
+                            <tr class="trCompte">
+                                <td>Supprimer:</td>
+                                <td><a href="{{ path('deleteLang', {'id': lang.id }) }}?admin=1" class="delete" data-confirm="Êtes vous sûr de vouloir effacer ce projet?"><img src="{{ asset('img/poubelle.png') }}"></a></td>                                    
+                            </tr>
+                        </table>
+                    {% endfor %}
+                </div>
+                <div id="pagingAdminUsers" class="paging border-top">
+                    {% include('/paging/paging.html.twig') %}
+                </div>  
+            </div>
+        </section>
+    </main>
+{% endblock %}

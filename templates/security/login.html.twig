@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="containerLogin">         
+            <h2>Connection</h2>
+            <form action="/loginAdminCV" method="post">
+                {% for message in app.flashes('success') %}
+                    <div class="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% if error %}
+                    <div class="alert">{{ error.messageKey | trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="formGroupLogin">
+                    <label for="username">Nom d'utilisateur</label><br />
+                    <input type="text" name="_username" id="username" class="form-control" placeholder="Nom d'utilisateur" value="{% if username is defined %} {{ username }} {% endif %}" required>
+                </div>     
+                <div class="formGroupLogin">
+                    <label for="password">Mot de passe</label><br />
+                    <input type="password" name="_password" id="password" class="form-control" placeholder="Mot de passe" required>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="formGroupLogin">
+                    <button type="submit" class="btnValidate">Connexion</button>
+                </div>
+            </form>
+            <div class="formGroupLogin">
+                <a class="font-weight-bold linkLogin" href="/forgotPassword">Mot de passe oublié ?</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

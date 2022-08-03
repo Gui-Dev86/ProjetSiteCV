@@ -1,19 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <title>{% block title %}Guillaume Vignères - Développeur back-end{% endblock %}</title>
+        <link rel="shortcut icon" type="image/ico" href="{{ asset('./favicon.ico') }}" />
+        <link rel="manifest" href="" />
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/mobile.css') }}" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         {% endblock %}
     </head>
+    
     <body>
+ 
+        <nav class="navMain">
+            <ul>
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li><a href="{{ path('home') }}#aboutMe">A propos</a></li>
+                <li><a href="{{ path('home') }}#mySkills">Compétences</a></li>
+                <li><a href="{{ path('home') }}#myCourse">Formation</a></li>
+                <li><a href="{{ path('home') }}#myProjects">Réalisations</a></li>
+                <li><a href="{{ path('home') }}#contactMe">Contact</a></li>
+            </ul>
+        </nav>
+        <nav class="navMobile">
+            <div id="menuButton">
+                <div id="burgerIcon" class="burger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div id="closeIcon" class="close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <div id="menuMobile">
+                <ul>
+                    <li><a href="{{ path('home') }}">Accueil</a></li>
+                    <li><a href="{{ path('home') }}#aboutMe">A propos</a></li>
+                    <li><a href="{{ path('home') }}#mySkills">Compétences</a></li>
+                    <li><a href="{{ path('home') }}#myCourse">Formation</a></li>
+                    <li><a href="{{ path('home') }}#myProjects">Réalisations</a></li>
+                    <li><a href="{{ path('home') }}#contactMe">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        
         {% block body %}{% endblock %}
+
+        <footer>
+            <div class="iconsSocialNetwork">      
+                <a href="https://www.linkedin.com/in/guillaume-vign%C3%A8res-8712ab132/" target="_blank"><img src="{{ asset('img/icons8-linkedin-entouré-48.png') }}"></a>
+                <a href="https://twitter.com/GVigneres" target="_blank"><img src="{{ asset('img/icons8-twitter-48.png') }}"></a>
+                <a href="https://github.com/Gui-Dev86" target="_blank"><img src="{{ asset('img/icons8-github-48.png') }}"></a>
+            </div>
+            <p>Guillaume VIGNERES © 2022 - <a href="{{ path('legalsMentions') }}" target="_blank">Mentions Légales</a> - <a href="{{ path('confidentialPolitic') }}" target="_blank">Politique de confidentialité</a>
+            {% if app.user %}
+                 - <a href="{{ path('app_pageAdmin')}}">Administration</a> - <a href="{{ path('app_logoutAdminCV')}}">Déconnexion</a>
+            {% endif %}
+            </p>
+        </footer>
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery-3.6.0.min.js') }}" /></script>
+            <script src="{{ asset('js/script.js') }}" /></script>
+            <script src="{{ asset('js/jQuery-plugin-progressbar.js') }}"></script>
+            <script>
+	            $(".progress-bar").loading();
+            </script>
+        {% endblock %}
     </body>
 </html>

@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guillaume Vignères - Développeur back-end{% endblock %}
+
+{% block body %}
+    <main>
+        <header class="bannerContainer" id="home">
+            <div class="bannerText">
+            <p>Guillaume Vignères</p>
+            <h1 class="text"></h1>
+            </div>
+        </header>
+        <section class="aboutContainer" id="aboutMe">
+            <div class="about">
+                <div class="aboutInfos">
+                    <img src="{{ asset('img/upload/avatars/' ~ user.avatar ) }}" alt="avatar">
+                    <p>{{ age }} ans, permis B, vivant à {{ user.city | capitalize }}.</p>
+                </div>
+                <div class="aboutText">
+                    <h4>A propos de moi</h4>
+                    <p>{{ user.content | capitalize }}</p>
+                </div>
+            </div>
+            <div class="aboutButtons">
+                <button onclick="window.open('files/{{ user.CvFile }}' )"><i class="fa-solid fa-print"></i>Télécharger mon CV</button>
+            </div>
+        </section>
+        <section class="capacitiesContainer" id="mySkills">
+            <section class="skillContainer">   
+                <h4>Compétences</h4>
+                {% for skill in skills %}
+                    <p>{{ skill.skillName | upper }}</p>
+                    <div class="progressContainer">
+                        <div class="skill" style="width: {{ skill.purcentSkill }}%;">
+                            <span>{{ skill.purcentSkill }}%</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </section>
+            <section class="environmentContainer">
+                <h4>Outils</h4>
+                <ul>
+                    {% for environment in environments %}
+                        <li><img src="{{ asset('img/upload/tools/' ~ environment.imageEnvironment) }}" alt="logo technologie">{{ environment.environmentName | capitalize }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+            <section class="langContainer">
+                <h4>Langues</h4>
+                {% for lang in langs %}
+                    <div class="progress-bar" data-percent="{{ lang.purcentLang }}" data-duration="1000">
+                    </div>
+                <p>{{ lang.langName | upper }}</p>
+                {% endfor %}
+            </section>
+            <section class="hobbiesContainer">
+                <h4>Hobbies</h4>
+                <ul>
+                    {% for hobby in hobbies %}
+                        <li>-{{ hobby.hobbiesName | capitalize }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </section>
+        <section class="courseContainer" id="myCourse">
+            <h4>Parcours</h4>
+            <div class="line">
+                {% for job in jobs %}
+                    <div class="linePoint">
+                        <p class="date">{{ job.dateBeginJob  | date('d-m-Y') }} {% if job.dateFinishJob == null %} {{ "en cours" }} {% else %} à {{ job.dateFinishJob  | date('d-m-Y') }} {% endif %}</p>
+                        <p class="name">{{ job.titleJob }}</p>
+                        <p class="description">{{ job.enterpriseJob }}, {{ job.placeJob }}</p>
+                        <p>{{ job.contentJob }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+        <section class="projectsContainer" id="myProjects">
+            <h4>Réalisations</h4>
+            <div class="projectInfos">
+                {% for project in projects %}
+                    <figure>
+                        <figcaption>
+                            <h5>{{ project.titleProject }}</h5>
+                            <p>{{ project.contentProject }}</p>
+                        </figcaption>
+                        <a href="#"></a><img src="{{ asset('img/upload/projects/' ~ project.imageProject) }}" alt="photo projet" />
+                    </figure>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="contactContainer" id="contactMe">
+            <div class="contactInfos">
+                <h4>N'hésitez pas à me contacter!</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i>{{ user.city }}, France</li>
+                    <li><i class="fa-solid fa-envelope"></i><a href="mailto:{{ user.email }}" title="Email">{{ user.email }}</a></li>
+                    <li><i class="fa-solid fa-phone"></i><a href="tel:[+33]{{ user.phone }}" title="Numéro de téléphone">+(33){{ user.phone }}</a></li><br />
+                    <li>Vous pouvez également utiliser le formulaire de contact mis à votre disposition.</li>
+                </ul>
+            </div>
+            <div class="sendMail">
+                <h4>Formulaire de contact</h4>
+                {% for message in app.flashes('success') %}
+                    <div class="alertContact">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {{ form_start(formSendMail) }}
+                    <div class="formGroupMail">
+                        <label for="sendName">Nom *</label>
+                        {{ form_widget(formSendMail.name) }}
+                        {{ form_errors(formSendMail.name) }}
+                    </div>  
+                    <div class="formGroupMail">
+                        <label for="sendMail">Email *</label>
+                        {{ form_widget(formSendMail.email) }}
+                        {{ form_errors(formSendMail.email) }}
+                    </div>
+                    <div class="formGroupMail">
+                        <label for="sendMessage">Message *</label>
+                        {{ form_widget(formSendMail.content) }}
+                        {{ form_errors(formSendMail.content) }}
+                    </div>
+                    <div class="formGroupMail">
+                        <p>{{ form_widget(formSendMail.accept) }}
+                        {{ form_errors(formSendMail.accept) }}
+                        J'autorise l'utilisation de mes données personelles pour m'envoyer une réponse par mail.</p>
+                    </div>
+                    <div class="formGroupMail formButton">
+                        <button type="submit" class="btnValidate">Envoyer</button>
+                    </div>
+                    <input type="hidden" id="newPasswordToken" name="newPassword[_token]" value="{{ csrf_token('newPassword') }}" />
+                {{ form_end(formSendMail) }}
+                <p class="formMessageValidate">Les champs suivis d'un * sont obligatoires.</p>
+            </div>   
+        </section>
+    </main>
+{% endblock %}

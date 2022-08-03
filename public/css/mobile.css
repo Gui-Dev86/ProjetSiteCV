@@ -1,0 +1,404 @@
+@media screen and (max-width: 1023px) {
+    main {
+      min-height: 90%;
+    }
+  
+    h3 {
+      padding: 1.5rem 0;
+      font-size: 6rem;
+    }
+
+    h4 {
+      font-size: 60px;
+    }
+
+    p {
+      font-size: 30px;
+    }
+
+    .navMain, .adminNav, .adminTab {
+      display: none;
+    }
+    
+    .navMobile {
+      display: block;
+      position: fixed;
+      z-index: 100;
+    }
+
+    .containerMenuAdminMobile, .containerAdminMobile {
+      display: block;
+    }
+
+    .containerMenuAdmin {
+      display: block;
+      width: 0;
+    }
+
+    .containerAdmin {
+      width: 100%;
+      padding-bottom: 40px;
+    }
+
+    #menuButton {
+      position: fixed;
+      top: 0;
+      right: 0;
+      font-size: 7rem;
+      margin: 20px 20px;
+      text-align: center;
+      width: 8rem;
+      z-index: 1;
+    }
+
+    .burger {
+      cursor: pointer;
+      color: #000;
+    }
+
+    .close {
+      cursor: pointer;
+      color: #fff;
+    }
+
+    #menuMobile {
+      display: none;
+      width: 100%;
+      position: fixed;
+      z-index: 0;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      animation: reveal 0.5s linear forwards;
+    }
+
+    #menuMobile ul {
+      width: 70%;
+      padding: 8rem 0;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      margin-top: 50px;
+      font-size: 4.5rem;
+    }
+
+    #menuMobile ul li {
+      margin-bottom: 4rem;
+    }
+
+    #menuMobile ul li a {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    #closeIcon {
+      display: none;
+    }
+
+    @keyframes reveal {
+      0% {opacity:0;}
+      25% {opacity:0.25;}
+      50% {opacity:0.5;}
+      75% {opacity:0.75;}
+      100% {opacity:1;}
+    }
+   
+    .about {
+      display: block;
+    }
+
+    .aboutInfos, .aboutText {
+      width: 100%;
+    }
+
+    .aboutText h4 {
+      margin-top: 45px;
+    }
+
+    .aboutButtons button {
+        font-size: 2.3rem;
+        padding: 25px 50px;
+    }
+
+    .aboutButtons button::after {
+      width: 56rem;
+      height: 53rem;
+      top: -370px;
+      left: -160px;
+    }
+
+    .capacitiesContainer {
+      flex-wrap: wrap;
+    }
+
+    .skillContainer,
+    .environmentContainer,
+    .langContainer,
+    .hobbiesContainer {
+      width: 85%;
+      margin: auto;
+      padding-bottom: 80px;
+    }
+
+    .environmentContainer h4,
+    .langContainer h4,
+    .hobbiesContainer h4 {
+      padding-left: 0px;
+    }
+
+    .environmentContainer li, .hobbiesContainer li {
+      font-size: 30px;
+    }
+
+    .skillContainer p {
+      margin-top: 35px;
+    }
+
+    .skill {
+      line-height: 45px;
+    }
+
+    .skill span {
+      top: -20px;
+      font-size: 45px;
+    }
+
+    .progress-bar {
+      height: 400px;
+      width: 400px;
+    }
+    
+    .progress-bar div {
+      height: 400px;
+      width: 400px;
+    }
+    
+    .progress-bar div span {
+      font-size: 50px;
+      line-height: 330px;
+      height: 350px;
+      width: 350px;
+      left: 25.5px;
+      top: 25.5px;
+    }
+    
+    .progress-bar .rotate,
+    .progress-bar .left,
+    .progress-bar .right {
+      clip: rect(0 200px 400px 0);
+    }
+
+    .courseContainer {
+      width: 85%;
+    }
+
+    .line {
+      width: 90%;
+      border-left: 6px solid #eaeaea;
+    }
+
+    .linePoint::before {
+      left: -16px;
+      width: 25px;
+      height: 25px;
+    }
+
+    .projectsContainer h4 {
+      width: 85%;
+    }
+
+    .projectInfos {
+      width: 85%;
+    }
+
+    figure {
+      width: 85%;
+      min-height: 472px;
+    }
+
+    .contactContainer {
+      display: block;
+    }
+
+    .contactInfos, .sendMail {
+      width: 100%;
+    }
+
+    .contactInfos h4 {
+      width: 85%;
+      margin: auto;
+      padding-left: 0;
+    }
+
+    .contactInfos ul {
+      width: 85%;
+      margin: auto;
+      padding-top: 20px;
+    }
+
+    label {
+      font-size: 40px;
+    }
+
+    .formMail {
+      margin-bottom: 30px;
+      padding-top: 30px;
+    }
+
+    textarea {
+      height: 250px;
+    }
+
+    .sendMail p {
+      font-size: 30px;
+      text-align: left;
+    }
+
+    input[type="checkbox" i] {
+      width: 30px;
+      height: 30px;
+    }
+
+    .btnValidate {
+      padding: 15px 75px;
+      font-size: 40px;
+    }
+
+    .iconsSocialNetwork img {
+      width: 100px;
+    }
+
+    .containerLogin, .containerSectionAdmin {
+      display: block;
+      padding-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 85px 0;
+      padding: 2.5rem 0;
+    }
+
+    .formGroupLogin {
+      margin-bottom: 65px;
+    }
+
+    .formGroupLogin input {
+      width: 485px;
+      height: 55px;
+      margin-top: 25px;
+      font-size: 30px;
+    }
+
+    .formGroupLogin input::placeholder {
+      font-size: 25px;
+    }
+
+    .containerAdminMobile {
+      min-height: 83rem;
+    }
+
+    .containerMenuAdminMobile {
+      padding-top: 125px;
+    }
+
+    .linkMenuAdminMobile {
+      background-color: #8624ad;
+      width: 47%;
+      padding: 5px 0;
+      margin: 10px;
+    }
+
+    .linkMenuAdminMobile:hover { background-color: #b485c7; }
+
+    .linkMobile { 
+      font-size: 60px;
+      color: #212529; }
+
+    .linkMobile:hover { color: #212529; }
+
+    .flexAdminMenuMobile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .pageItem {
+      font-size: 95px;
+    }
+
+    .chevronRight, .chevronPaging {
+      width: 100px;
+    }
+
+    .adminMain {
+      min-height: 48rem;
+    }
+
+    h3 img {
+      width: 85px;
+      margin-left: 60px;
+      vertical-align: middle;
+    }
+
+    .btnUpload {
+      width: 12rem;
+    }
+
+    .panel {
+      border: 1px SOLID rgba(0, 0, 0, 0.7);
+      border-radius: 50px;
+      padding: 5px;
+      width: 90%;
+      margin: 25px auto;
+    }
+
+    td {
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    td img {
+      width: 50px;
+    }
+
+    .rgpdContainer {
+      font-size: 30px;
+    }
+
+    .rgpdContainer h5 {
+      padding: 80px 0;
+    }
+    
+    .adminTabProfil {
+      min-height: 65rem;
+    }
+
+    .btnUserProfil {
+      width: 45rem;
+    }
+
+    .containerProfil {
+        display: block;
+    }
+
+    .containerDatasProfil {
+      margin: 50px auto;
+      width: 90%;
+    }
+
+    .containerDatasProfil p {
+      font-size: 45px;
+    }
+
+    .containerModifyProfil {
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .containerModifyProfil h6 {
+      font-size: 60px;
+    }
+}
+
+
