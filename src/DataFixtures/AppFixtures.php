@@ -25,8 +25,8 @@ class AppFixtures extends Fixture
     {
         $user = new User();
         $user->setUsername('adminGuiCV')
-            ->setEmail('guillaume.vigneres@gmail.com')
-            ->setPassword($this->passwordHasher->hashPassword($user, 'Nougat!!2006'))
+            ->setEmail('mailTest@gmail.com')
+            ->setPassword($this->passwordHasher->hashPassword($user, 'passtest'))
             ->setDateBirthday(new \Datetime(1986-5-4))
             ->setDateUpdate(new \Datetime)
             ->setPhone('0671075551')
