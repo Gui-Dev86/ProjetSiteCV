@@ -73,7 +73,7 @@ if (document.getElementsByClassName('text').length) {
     }
     
     const phrases = [
-      'Développeur back-end'
+      'Développeur web'
     ]
     
     const el = document.querySelector('.text')

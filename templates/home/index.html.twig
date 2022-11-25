@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Guillaume Vignères - Développeur back-end{% endblock %}
+{% block title %}Guillaume Vignères - Développeur web{% endblock %}
 
 {% block body %}
     <main>
@@ -13,11 +13,11 @@
         <section class="aboutContainer" id="aboutMe">
             <div class="about">
                 <div class="aboutInfos">
-                    <img src="{{ asset('img/upload/avatars/' ~ user.avatar ) }}" alt="avatar">
+                    <img src="{{ asset('img/upload/avatars/' ~ user.avatar ) }}" alt="avatar"><br /><br />
                     <p>{{ age }} ans, permis B, vivant à {{ user.city | capitalize }}.</p>
                 </div>
                 <div class="aboutText">
-                    <h4>A propos de moi</h4>
+                    <h4>A propos de moi</h4><br />
                     <p>{{ user.content | capitalize }}</p>
                 </div>
             </div>
@@ -75,7 +75,6 @@
                 {% endfor %}
             </div>
         </section>
-        
         <section class="projectsContainer" id="myProjects">
             <h4>Réalisations</h4>
             <div class="projectInfos">
@@ -88,9 +87,8 @@
                         <a href="#"></a><img src="{{ asset('img/upload/projects/' ~ project.imageProject) }}" alt="photo projet" />
                     </figure>
                 {% endfor %}
-            </div>
+            </div>          
         </section>
-
         <section class="contactContainer" id="contactMe">
             <div class="contactInfos">
                 <h4>N'hésitez pas à me contacter!</h4>
